@@ -1,16 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"godupan/ui"
 	"godupan/pan"
+	"net/http"
 )
 
-
 func main() {
-	fmt.Println("ok")
-
-	client := &http.Client{}
-	br := new(pan.BaiduRequest)
-	br.Login(client)
+	go func() {
+		client := &http.Client{}
+		br := new(pan.BaiduRequest)
+		br.Login(client)
+	}()
+	ui.Start()
 }
