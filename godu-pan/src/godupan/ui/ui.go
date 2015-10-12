@@ -5,6 +5,8 @@ import (
 	"github.com/google/gxui/drivers/gl"
 	"github.com/google/gxui/samples/flags"
     "github.com/google/gxui/math"
+    "log"
+    "io/ioutil"
 )
 
 func Start() {
@@ -40,12 +42,21 @@ func appMain(driver gxui.Driver) {
 	// │   C   │║│   D   │
 	// │       │║│       │
 	// └───────┘║└───────┘
-
+	
+	ftData, err := ioutil.ReadFile("static/font/simsun.ttf")
+	if err != nil {
+		log.Println(err)
+	}
+	ft, err := driver.CreateFont(ftData, 20)
+	if err != nil {
+		log.Println(err)
+	}
 	menu := theme.CreateLinearLayout()
 	menu.SetDirection(gxui.LeftToRight)
 	logo_label:=theme.CreateLabel()
 	logo_label.SetColor(gxui.White)
-	logo_label.SetText("Pan")
+	logo_label.SetFont(ft)	
+	logo_label.SetText("百度")
 	logo_label.SetSize(math.Size{300,200})
 	menu.AddChild(logo_label)
 	
