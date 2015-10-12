@@ -43,7 +43,7 @@ func appMain(driver gxui.Driver) {
 	// │       │║│       │
 	// └───────┘║└───────┘
 	
-	ftData, err := ioutil.ReadFile("static/font/simsun.ttf")
+	ftData, err := ioutil.ReadFile("static/font/simhei.ttf")
 	if err != nil {
 		log.Println(err)
 	}
@@ -56,7 +56,7 @@ func appMain(driver gxui.Driver) {
 	logo_label:=theme.CreateLabel()
 	logo_label.SetColor(gxui.White)
 	logo_label.SetFont(ft)	
-	logo_label.SetText("百度")
+	logo_label.SetText("百度盘")
 	logo_label.SetSize(math.Size{300,200})
 	menu.AddChild(logo_label)
 	
@@ -72,7 +72,7 @@ func appMain(driver gxui.Driver) {
 	vSplitter.AddChild(menu)
 	vSplitter.AddChild(splitterCD)
 
-	window := theme.CreateWindow(800, 600, "Baidu Pan in Go")
+	window := theme.CreateWindow(800, 600, "百度盘")
 	window.SetScale(flags.DefaultScaleFactor)
 	window.AddChild(vSplitter)
 	window.OnClose(driver.Terminate)
